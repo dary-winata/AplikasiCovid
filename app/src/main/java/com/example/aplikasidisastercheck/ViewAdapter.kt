@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class ViewAdapter(): RecyclerView.Adapter<ViewHolder>() {
-    var data: List<InfoFaskes>? = emptyList()
+    var data: List<DataItem>? = emptyList()
 
-    fun setDataList(paramData: List<InfoFaskes>?){
+    fun setDataList(paramData: List<DataItem>?){
         data = paramData
         notifyDataSetChanged()
     }

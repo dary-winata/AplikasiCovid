@@ -3,34 +3,103 @@ package com.example.aplikasidisastercheck
 import com.google.gson.annotations.SerializedName
 
 data class InfoFaskes(
-    @SerializedName("id"           ) var id: List<InfoFaskes>?,
-    @SerializedName("kode"         ) var kode: String,
-    @SerializedName("nama"         ) var nama: String,
-    @SerializedName("kota"         ) var kota: String,
-    @SerializedName("provinsi"     ) var provinsi: String,
-    @SerializedName("alamat"       ) var alamat: String,
-    @SerializedName("latitude"     ) var latitude: String,
-    @SerializedName("longitude"    ) var longitude: String,
-    @SerializedName("telp"         ) var telp: String,
-    @SerializedName("jenis_faskes" ) var jenisFaskes: String,
-    @SerializedName("kelas_rs"     ) var kelasRs: String,
-    @SerializedName("status"       ) var status: String,
-    @SerializedName("Detail"       ) var detail: DetailFaskes
+
+	@field:SerializedName("count_total")
+	val countTotal: Int? = null,
+
+	@field:SerializedName("data")
+	val data: List<DataItem>? = null,
+
+	@field:SerializedName("success")
+	val success: Boolean? = null,
+
+	@field:SerializedName("message")
+	val message: String? = null
 )
 
-data class DetailFaskes (
-    @SerializedName("id"               ) var id             : Int,
-    @SerializedName("kode"             ) var kode           : String,
-    @SerializedName("batch"            ) var batch          : String,
-    @SerializedName("divaksin"         ) var divaksin       : Int,
-    @SerializedName("divaksin_1"       ) var divaksin1      : Int,
-    @SerializedName("divaksin_2"       ) var divaksin2      : Int,
-    @SerializedName("batal_vaksin"     ) var batalVaksin    : Int,
-    @SerializedName("batal_vaksin_1"   ) var batalVaksin1   : Int,
-    @SerializedName("batal_vaksin_2"   ) var batalVaksin2   : Int,
-    @SerializedName("pending_vaksin"   ) var pendingVaksin  : Int,
-    @SerializedName("pending_vaksin_1" ) var pendingVaksin1 : Int,
-    @SerializedName("pending_vaksin_2" ) var pendingVaksin2 : Int,
-    @SerializedName("tanggal"          ) var tanggal        : String
+data class DetailItem(
 
+	@field:SerializedName("batal_vaksin")
+	val batalVaksin: Int? = null,
+
+	@field:SerializedName("pending_vaksin_1")
+	val pendingVaksin1: Int? = null,
+
+	@field:SerializedName("pending_vaksin_2")
+	val pendingVaksin2: Int? = null,
+
+	@field:SerializedName("batch")
+	val batch: String? = null,
+
+	@field:SerializedName("divaksin_1")
+	val divaksin1: Int? = null,
+
+	@field:SerializedName("divaksin")
+	val divaksin: Int? = null,
+
+	@field:SerializedName("divaksin_2")
+	val divaksin2: Int? = null,
+
+	@field:SerializedName("kode")
+	val kode: String? = null,
+
+	@field:SerializedName("pending_vaksin")
+	val pendingVaksin: Int? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null,
+
+	@field:SerializedName("tanggal")
+	val tanggal: String? = null,
+
+	@field:SerializedName("batal_vaksin_2")
+	val batalVaksin2: Int? = null,
+
+	@field:SerializedName("batal_vaksin_1")
+	val batalVaksin1: Int? = null
+)
+
+data class DataItem(
+
+	@field:SerializedName("provinsi")
+	val provinsi: String? = null,
+
+	@field:SerializedName("kota")
+	val kota: String? = null,
+
+	@field:SerializedName("telp")
+	val telp: String? = null,
+
+	@field:SerializedName("source_data")
+	val sourceData: String? = null,
+
+	@field:SerializedName("latitude")
+	val latitude: String? = null,
+
+	@field:SerializedName("alamat")
+	val alamat: String? = null,
+
+	@field:SerializedName("nama")
+	val nama: String? = null,
+
+	@field:SerializedName("kode")
+	val kode: String? = null,
+
+	@field:SerializedName("kelas_rs")
+	val kelasRs: String? = null,
+
+	@field:SerializedName("jenis_faskes")
+	val jenisFaskes: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null,
+
+	@field:SerializedName("detail")
+	val detail: List<DetailItem?>? = null,
+
+	@field:SerializedName("longitude")
+	val longitude: String? = null,
+
+	@field:SerializedName("status")
+	val status: String? = null
 )

@@ -4,6 +4,6 @@ import retrofit2.http.GET
 import retrofit2.Call
 
 interface ApiEndpoint {
-    @GET("?city=Surabaya")
-    fun getDataCity(): Call<List<InfoFaskes>>
+    @GET("get-faskes-vaksinasi/?city=Surabaya")
+    fun getDataCity(): Call<InfoFaskes>
 }

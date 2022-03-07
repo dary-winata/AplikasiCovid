@@ -15,8 +15,8 @@ class NewsActivity: AppCompatActivity() {
     lateinit var rvNews: RecyclerView
     lateinit var viewAdapterTesting: ViewAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.news_layout)
 
         Log.e("*****", "kimak123")
@@ -26,29 +26,22 @@ class NewsActivity: AppCompatActivity() {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL)
         rvNews.setLayoutManager(layoutManager)
         rvNews.adapter = viewAdapterTesting
-        Log.e("*****", "kimak123")
 
         NetworkConfig().getService()
             .getDataCity()
-            .enqueue(object : Callback<List<InfoFaskes>> {
-                override fun onFailure(call: Call<List<InfoFaskes>>, t: Throwable) {
+            .enqueue(object : Callback<InfoFaskes> {
+                override fun onFailure(call: Call<InfoFaskes>, t: Throwable) {
                     Toast.makeText(this@NewsActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
-                    Log.e("&&&&", "kimak")
                 }
 
                 override fun onResponse(
-                    call: Call<List<InfoFaskes>>,
-                    response: Response<List<InfoFaskes>>
+                    call: Call<InfoFaskes>,
+                    response: Response<InfoFaskes>
                 ) {
-                    tesitng()
-                    response.body()?.forEach { Log.e("*", it.nama) }
-                    viewAdapterTesting.setDataList(response.body())
+                    val infoFaskes: InfoFaskes? = response.body()
+                    viewAdapterTesting.setDataList(infoFaskes?.data)
                 }
             })
         Log.e("*****", "kimak321")
-    }
-
-    fun tesitng(){
-        Toast.makeText(this@NewsActivity, "Berhasil", Toast.LENGTH_SHORT).show()
     }
 }

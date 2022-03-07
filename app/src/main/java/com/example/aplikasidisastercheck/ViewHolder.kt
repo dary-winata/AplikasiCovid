@@ -13,7 +13,7 @@ class ViewHolder(inflater: LayoutInflater, parent: ViewGroup):
         title = itemView.findViewById(R.id.tvTitle)
     }
 
-    fun bind(news: InfoFaskes?) {
+    fun bind(news: DataItem?) {
         title.text = news?.nama
     }
 }
