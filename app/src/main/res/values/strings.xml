@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Aplikasi Disaster Check</string>
+
+    <string-array name="Kota">
+        <item>Surabaya</item>
+        <item>Jakarta</item>
+        <item>Jogja</item>
+    </string-array>
+</resources>
