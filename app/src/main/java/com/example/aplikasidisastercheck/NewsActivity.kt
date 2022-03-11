@@ -3,10 +3,12 @@ package com.example.aplikasidisastercheck
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,29 +21,26 @@ class NewsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.news_layout)
 
-        Log.e("*****", "kimak123")
         rvNews = findViewById(R.id.rvNews)
-        viewAdapterTesting = ViewAdapter()
         val layoutManager: LinearLayoutManager = LinearLayoutManager(this)
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL)
         rvNews.setLayoutManager(layoutManager)
-        rvNews.adapter = viewAdapterTesting
 
         NetworkConfig().getService()
-            .getDataCity()
-            .enqueue(object : Callback<InfoFaskes> {
-                override fun onFailure(call: Call<InfoFaskes>, t: Throwable) {
+            .getNewsHealthIndonesia()
+            .enqueue(object : Callback<News> {
+                override fun onFailure(call: Call<News>, t: Throwable) {
                     Toast.makeText(this@NewsActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(
-                    call: Call<InfoFaskes>,
-                    response: Response<InfoFaskes>
+                    call: Call<News>,
+                    response: Response<News>
                 ) {
-                    val infoFaskes: InfoFaskes? = response.body()
-                    viewAdapterTesting.setDataList(infoFaskes?.data)
+                    val news: News? = response.body()
+                    viewAdapterTesting = ViewAdapter(news?.articles)
+                    rvNews.adapter = viewAdapterTesting
                 }
             })
-        Log.e("*****", "kimak321")
     }
 }
