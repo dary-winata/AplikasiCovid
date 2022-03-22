@@ -26,7 +26,7 @@ class NewsActivity: AppCompatActivity() {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL)
         rvNews.setLayoutManager(layoutManager)
 
-        NetworkConfig().getService()
+        NetworkConfig().NewsCovid()
             .getNewsHealthIndonesia()
             .enqueue(object : Callback<News> {
                 override fun onFailure(call: Call<News>, t: Throwable) {
@@ -38,7 +38,7 @@ class NewsActivity: AppCompatActivity() {
                     response: Response<News>
                 ) {
                     val news: News? = response.body()
-                    viewAdapterTesting = ViewAdapter(news?.articles)
+                    viewAdapterTesting = ViewAdapter(checkNewsContainCovid(news?.articles))
                     rvNews.adapter = viewAdapterTesting
                 }
             })

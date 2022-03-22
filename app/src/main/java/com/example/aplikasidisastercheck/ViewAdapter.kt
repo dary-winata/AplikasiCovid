@@ -11,16 +11,14 @@ import com.squareup.picasso.Picasso
 import kotlin.math.log
 
 
-class ViewAdapter(var data: List<ArticlesItem>?): RecyclerView.Adapter<ViewAdapter.holderNewsAdapter>() {
+class ViewAdapter(private var data: List<ArticlesItem>?): RecyclerView.Adapter<ViewAdapter.holderNewsAdapter>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): holderNewsAdapter {
         val inflater = LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
         return holderNewsAdapter(inflater)
     }
 
     override fun onBindViewHolder(holder: holderNewsAdapter, position: Int) {
-        Log.d("false", "false")
-        if(checkString(data?.get(position)))
-            holder.bind(data?.get(position))
+        holder.bind(data?.get(position))
     }
 
     override fun getItemCount(): Int {
@@ -37,14 +35,5 @@ class ViewAdapter(var data: List<ArticlesItem>?): RecyclerView.Adapter<ViewAdapt
             descr.text = get?.description
             Picasso.get().load(get?.urlToImage).fit().centerCrop().into(img)
         }
-    }
-
-    fun checkString(data: ArticlesItem?): Boolean {
-        data as ArticlesItem
-        if(data.content!!.contains("COVID", ignoreCase = true) ||
-                data.title!!.contains("COVID", ignoreCase = true) ||
-                data.description!!.contains("COVID", ignoreCase = true))
-            return true ?: false
-        return false
     }
 }

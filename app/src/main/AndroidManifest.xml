@@ -14,6 +14,9 @@
         android:theme="@style/Theme.AplikasiDisasterCheck"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".FaskesActivity"
+            android:exported="false" />
+        <activity
             android:name=".news_layout_secondary"
             android:exported="false" />
         <activity

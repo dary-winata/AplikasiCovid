@@ -2,14 +2,16 @@ package com.example.aplikasidisastercheck
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 class NetworkConfig {
-    fun getRetrofit(): Retrofit {
+    private fun getRetrofit(): Retrofit {
         return  Retrofit.Builder().
         baseUrl(globalString.BASE_URL_NEWS).
         addConverterFactory(GsonConverterFactory.create()).
         build()
     }
 
-    fun getService() = getRetrofit().create(getNews::class.java)
+    fun NewsCovid() = getRetrofit().create(NewsCovid::class.java)
+    fun FaskesCovid() = getRetrofit().create(FaskesCovid::class.java)
 }
