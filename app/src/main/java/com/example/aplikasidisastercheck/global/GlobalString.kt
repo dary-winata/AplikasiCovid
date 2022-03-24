@@ -1,4 +1,4 @@
-package com.example.aplikasidisastercheck
+package com.example.aplikasidisastercheck.global
 
 object globalString {
     const val BASE_URL_COVID_INDONESIA: String = "https://kipi.covid19.go.id/api/"

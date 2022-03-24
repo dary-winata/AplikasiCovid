@@ -1,14 +1,15 @@
-package com.example.aplikasidisastercheck
+package com.example.aplikasidisastercheck.view
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.example.aplikasidisastercheck.News
+import com.example.aplikasidisastercheck.R
+import com.example.aplikasidisastercheck.ViewAdapter
+import com.example.aplikasidisastercheck.checkNewsContainCovid
+import com.example.aplikasidisastercheck.model.retrofit.GeneralRetrofit
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,8 +27,7 @@ class NewsActivity: AppCompatActivity() {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL)
         rvNews.setLayoutManager(layoutManager)
 
-        NetworkConfig().NewsCovid()
-            .getNewsHealthIndonesia()
+        GeneralRetrofit().NewsCovid().getNewsHealthIndonesia()
             .enqueue(object : Callback<News> {
                 override fun onFailure(call: Call<News>, t: Throwable) {
                     Toast.makeText(this@NewsActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
@@ -38,6 +38,7 @@ class NewsActivity: AppCompatActivity() {
                     response: Response<News>
                 ) {
                     val news: News? = response.body()
+                    val test = checkNewsContainCovid(news?.articles)
                     viewAdapterTesting = ViewAdapter(checkNewsContainCovid(news?.articles))
                     rvNews.adapter = viewAdapterTesting
                 }

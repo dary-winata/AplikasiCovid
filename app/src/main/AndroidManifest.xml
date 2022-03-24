@@ -14,13 +14,13 @@
         android:theme="@style/Theme.AplikasiDisasterCheck"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".FaskesActivity"
+            android:name=".view.FaskesActivity"
             android:exported="false" />
         <activity
             android:name=".news_layout_secondary"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewsActivity" />
+        <activity android:name=".view.NewsActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.aplikasidisastercheck
+package com.example.aplikasidisastercheck.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Spinner
+import com.example.aplikasidisastercheck.R
+import com.example.aplikasidisastercheck.global.globalString
 
 class MainActivity : AppCompatActivity() {
     lateinit var button: Button
